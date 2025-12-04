@@ -1,0 +1,330 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+min-height: 100vh;
+background: linear-gradient(135deg, #71b7e6, #9b59b6);
+background-attachment: fixed;
+}
+
+.form-container {
+    display: flex;
+    gap: 20px;
+}
+
+.container {
+    width: auto;
+    height: auto;
+    padding: 30px;
+    background: #fff;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.container:hover {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    transition: 0.3s ease-in-out;
+}
+
+.container div {
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+form .input-box {
+    width: 400px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+form .input-box label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+form .input-box .glabel {
+    margin-right: 10px;
+    font-weight: 500;
+    display: inline;
+}
+
+form .input-box input[type="text"],
+form .input-box input[type="email"],
+form .input-box input[type="tel"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+form .input-box input[type="radio"] {
+    margin-right: 5px;
+}
+
+form .input-box label[for="male"],
+form .input-box label[for="female"] {
+    margin-right: 15px;
+}
+
+form input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background: linear-gradient(135deg, #71b7e6, #9b59b6);
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+form input[type="submit"]:hover {
+    background-color: #8e44ad;
+}
+
+.container .address {
+    width: 400px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+.container .address label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.container .address textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+form .input-box {
+    position: relative;
+    margin-bottom: 25px;
+    padding-bottom: 30px;
+}
+
+small {
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+    visibility: hidden;
+    font-size: 12px;
+    padding-left: 10px;
+    padding-top: 20px;
+    margin-top: 10px;
+}
+
+.input-box.success input {
+    border-color: #2ecc71;
+}
+
+.input-box.error input {
+    border-color: #e74c3c;
+}
+
+.input-box.success i.fa-check-circle {
+    visibility: visible;
+    color: #2ecc71;
+}
+
+.input-box.error i.fa-exclamation-circle {
+    visibility: visible;
+    color: #e74c3c;
+}
+
+.input-box.error small {
+    visibility: visible;
+    color: #e74c3c;
+}
+
+.input-box.success small {
+    visibility: hidden;
+}
+
+.input-box i {
+    visibility: hidden;
+    position: absolute;
+    right: 20px;
+    top: 50px;
+}
+
+.result {
+    margin-top: 20px;
+    padding: 30px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    width: auto;
+    margin-bottom: 20px;
+    display: none;
+}
+
+.result h2 {
+    margin-bottom: 20px;
+}
+
+.result p {
+    margin: 5px 0;
+    padding-bottom: 20px;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+#dataTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+#dataTable thead {
+    background: linear-gradient(135deg, #71b7e6, #9b59b6);
+    color: white;
+}
+
+#dataTable thead th {
+    padding: 14px;
+    font-size: 15px;
+    text-align: left;
+    letter-spacing: 0.5px;
+}
+
+#dataTable tbody tr {
+    background: white;
+    transition: 0.2s ease;
+}
+
+#dataTable tbody tr:nth-child(even) {
+    background: #f7faff;
+}
+
+#dataTable tbody tr:hover {
+    background: #eaf3ff;
+}
+
+#dataTable td {
+    padding: 12px 14px;
+    font-size: 14px;
+    color: #333;
+    border-bottom: 1px solid #eee;
+}
+
+
+#dataTable button {
+    padding: 6px 12px;
+    font-size: 13px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-right: 5px;
+    transition: 0.2s ease;
+}
+
+#dataTable button:nth-child(1) {
+    background: #ffd966;
+    color: #7a6000;
+}
+
+#dataTable button:nth-child(1):hover {
+    background: #ffcd42;
+}
+
+#dataTable button:nth-child(2) {
+    background: #ff6868;
+    color: white;
+}
+
+#dataTable button:nth-child(2):hover {
+    background: #ff4545;
+}
+
+.input-col2 {
+    margin-bottom: 40px !important;
+}
+
+.sortdiv {
+    display: inline-block;
+}
+
+#filter {
+    padding: 10px 15px 10px 15px;
+    border-radius: 5px;
+    font-size: 20px;
+    background-color: #a995e2;
+    margin-left: 50px;
+}
+#filter:hover{
+    background-color: #ab97e7;
+}
+.sortdiv label{
+    font-size: 20px;
+}
+.sortdiv select{
+    font-size: 20px;
+}
+.filter-wrapper {
+    position: relative;    
+    display: inline-block;
+}
+.filter-container{
+    width: 300px;
+    padding: 30px;
+    font-size: 20px;
+    border: #C4B5FD;
+    background-color: #E6E0FF;
+    border-radius: 5px;
+    position: absolute;
+    top: 100%;           
+    left: 0;
+    display: none;
+    z-index: 15;
+}
+.filter-wrapper:hover .filter-container{
+    display: block;
+}
+.filterbycity , .filterbygender{
+    display: inline-block;
+    font-size: 24px;
+    font-weight: 400;
+    margin-bottom: 20px;
+}
+.filter-check{
+    margin-bottom: 15px;
+}
+.applyfilter{
+    display: block;
+    margin:  0 auto;
+    padding: 10px 15px 10px 15px;
+    border-radius: 5px;
+    font-size: 20px;
+    background-color: #c098e1;
+}
