@@ -7,10 +7,11 @@
     <title>Basic-Form</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
 </head>
 
 <body>
+    <div class="filter-backdrop" id="filter-backdrop"></div>
+
     <div class="container page-container">
         <form id="form" onsubmit="handleFormSubmit(event)">
             <h1>Registration Form</h1>
@@ -27,8 +28,7 @@
                         <label for="lname">Last name </label>
                         <input type="text" name="lname" placeholder="Doe" oninput="validateLname()">
                         <i class="fas fa-check-circle"></i>
-                        <i class="fas fa-exclamation-circle"></i>
-                        <small>Error Message</small>
+                        <i class="fas fa-exclamation-circle"></i> <small>Error Message</small>
                     </div>
                     <div class="input-box email">
                         <label for="email">Email </label>
@@ -44,9 +44,10 @@
                         <i class="fas fa-exclamation-circle"></i>
                         <small>Error Message</small>
                     </div>
-                    <div class="input-box city">
-                        <label for="city">City </label>
-                        <select name="city" class="city-select" id="city" oninput="validateCity()">
+                </div>
+                <div class="col2">
+                     <div class="input-box city"> <label for="city">City </label> <select name="city" class="city-select"
+                            id="city" oninput="validateCity()">
                             <option value="Delhi">Delhi</option>
                             <option value="Noida">Noida</option>
                             <option value="Gurgaon">Gurgaon</option>
@@ -54,76 +55,57 @@
                             <option value="Amritsar">Amritsar</option>
                             <option value="Jalandhar">Jalandhar</option>
                             <option value="Patna">Patna</option>
-
-                        </select>
-                        <br>
-                        <small></small>
-                    </div>
-                </div>
-                <div class="col2">
+                        </select> <br> <small></small> </div>
                     <div class="input-box gender input-col2">
                         <label for="gender">Gender</label>
-                        <input type="radio" name="gender" value="male" id="male"
-                            onclick="toggleGenderRadioButtons(this)">
+                        <input type="radio" name="gender" value="male" id="male" onclick="toggleGenderRadioButtons(this)">
                         <label for="male" class="glabel">Male</label>
-                        <input type="radio" name="gender" value="female" id="female"
-                            onclick="toggleGenderRadioButtons(this)">
+                        <input type="radio" name="gender" value="female" id="female" onclick="toggleGenderRadioButtons(this)">
                         <label for="female" class="glabel">Female</label>
-                        <input type="radio" name="gender" value="other" id="other"
-                            onclick="toggleGenderRadioButtons(this)">
+                        <input type="radio" name="gender" value="other" id="other" onclick="toggleGenderRadioButtons(this)">
                         <label for="other" class="glabel">Other</label>
                         <i class="fas fa-check-circle"></i>
                         <i class="fas fa-exclamation-circle"></i>
                         <small></small>
                     </div>
-                    <div class="input-box dob input-col2">
-                        <label for="dob">Date of Birth </label>
-                        <input type="date" name="dob" oninput="validateDOB()">
-                        <i class="fas fa-check-circle"></i>
-                        <i class="fas fa-exclamation-circle"></i>
+                    <div class="input-box dob input-col2"> 
+                        <label for="dob">Date of Birth </label> 
+                        <input type="date" name="dob" oninput="validateDOB()"> 
+                            <i class="fas fa-check-circle"></i> 
+                            <i class="fas fa-exclamation-circle"></i> 
+                            <small></small> 
+                        </div>
+                    <div class="input-box language input-col2"> 
+                        <label for="language">Language Known </label> 
+                        <input type="checkbox" name="language" value="english" id="english" onchange="validateLanguage()">
+                        <label for="english" class="glabel">English</label> 
+                        <input type="checkbox" name="language" value="hindi" id="hindi" onchange="validateLanguage()"> 
+                        <label for="hindi" class="glabel">Hindi</label> 
+                        <input type="checkbox" name="language" value="punjabi" id="punjabi" onchange="validateLanguage()"> 
+                        <label for="punjabi" class="glabel">Punjabi</label> 
+                        <input type="checkbox" name="language" value="bhojpuri" id="bhojpuri" onchange="validateLanguage()"> 
+                        <label for="bhojpuri" class="glabel">Bhojpuri</label> <br> 
+                        <i class="fas fa-check-circle"></i> 
+                        <i class="fas fa-exclamation-circle"></i> 
                         <small></small>
                     </div>
-                    <div class="input-box language input-col2">
-                        <label for="language">Language Known </label>
-                        <input type="checkbox" name="language" value="english" id="english"
-                            onchange="validateLanguage()">
-                        <label for="english" class="glabel">English</label>
-                        <input type="checkbox" name="language" value="hindi" id="hindi" onchange="validateLanguage()">
-                        <label for="hindi" class="glabel">Hindi</label>
-                        <input type="checkbox" name="language" value="punjabi" id="punjabi"
-                            onchange="validateLanguage()">
-                        <label for="punjabi" class="glabel">Punjabi</label>
-                        <input type="checkbox" name="language" value="bhojpuri" id="bhojpuri"
-                            onchange="validateLanguage()">
-                        <label for="bhojpuri" class="glabel">Bhojpuri</label>
-                        <br>
-                        <i class="fas fa-check-circle"></i>
-                        <i class="fas fa-exclamation-circle"></i>
-                        <small></small>
-
-                    </div>
-                    <div class="input-box address input-col2">
-                        <label for="address">Address </label>
-                        <textarea name="address" rows="4" oninput="validateAddress()"></textarea>
-                        <br>
-                        <i class="fas fa-check-circle"></i>
-                        <i class="fas fa-exclamation-circle"></i>
-                        <small></small>
-                    </div>
+                   
                 </div>
-            </div>
 
-            <div class="button">
-                <input type="submit" value="Register" id="submit">
             </div>
+             <div class="input-box address"> <label for="address">Address </label> <textarea
+                            name="address" rows="4" oninput="validateAddress()"></textarea> <br> <i
+                            class="fas fa-check-circle"></i> <i class="fas fa-exclamation-circle"></i> <small></small>
+                    </div>
+            <div class="button"> <input type="submit" value="Register" id="submit"> </div>
         </form>
     </div>
     <div class="result page-container" id="result">
+        <div class="backdraw"></div>
         <h2>Submitted details</h2>
         <div class="sort-div-row">
-            <div class="sortdiv">
-                <label for="sortby">Sort by</label>
-                <select name="sortby" id="sortby" onchange="sortBy(this)">
+            <div class="sortdiv"> <label for="sortby">Sort by</label> <select name="sortby" id="sortby"
+                    onchange="sortBy(this)">
                     <option value=""></option>
                     <option value="fnameasc">First Name(A-Z) </option>
                     <option value="fnamedesc">First Name(Z-A) </option>
@@ -133,90 +115,87 @@
                     <option value="agedesc">DOB(High to Low)</option>
                     <option value="cityasc">City(A-Z)</option>
                     <option value="citydesc">City(Z-A)</option>
-                </select>
-            </div>
-            <div class="filter-wrapper">
-                <!-- Filter Button -->
+                </select> </div>
+            <div class="filter-wrapper"> <!-- Filter Button -->
                 <button id="filter" onclick="showFilter()">Filter By</button>
                 <!-- Filter container -->
                 <div class="filter-container" id="filter-container">
-                    <label class="filterbycity">Filter by city</label>
                     &nbsp;
                     <i class="fa-solid fa-xmark cross" onclick="hideFilter()"></i>
-                    <div class="filter-check">
-                        <input type="checkbox" name="filter-city" id="delhi" value="Delhi">
-                        <label for="delhi">Delhi</label>
-                    </div>
-                    <div class="filter-check">
-                        <input type="checkbox" name="filter-city" id="noida" value="Noida">
-                        <label for="noida">Noida</label>
+                    <div class="filter-inner-row">
+                        <div class="filter-section">
+                            <label class="filterbycity">Filter by city</label>
+                            <div class="filter-check"> <input type="checkbox" name="filter-city" id="delhi"
+                                    value="Delhi">
+                                <label for="delhi">Delhi</label>
+                            </div>
+                            <div class="filter-check"> <input type="checkbox" name="filter-city" id="noida"
+                                    value="Noida">
+                                <label for="noida">Noida</label>
+                            </div>
+                            <div class="filter-check"> <input type="checkbox" name="filter-city" id="amritsar"
+                                    value="Amritsar">
+                                <label for="amritsar">Amritsar</label>
+                            </div>
+                            <div class="filter-check"> <input type="checkbox" name="filter-city" id="gurgaon"
+                                    value="Gurgaon">
+                                <label for="gurgaon">Gurgaon</label>
+                            </div>
+                            <div class="filter-check"> <input type="checkbox" name="filter-city" id="faridabad"
+                                    value="Faridabad"> <label for="faridabad">Faridabad</label> </div>
+                            <div class="filter-check"> <input type="checkbox" name="filter-city" id="jalandhar"
+                                    value="Jalandhar"> <label for="jalandhar">Jalandhar</label> </div>
+                            <div class="filter-check"> <input type="checkbox" name="filter-city" id="patna"
+                                    value="Patna">
+                                <label for="patna">Patna</label>
+                            </div>
 
-                    </div>
-                    <div class="filter-check">
-                        <input type="checkbox" name="filter-city" id="amritsar" value="Amritsar">
-                        <label for="amritsar">Amritsar</label>
-                    </div>
-                    <div class="filter-check">
-                        <input type="checkbox" name="filter-city" id="gurgaon" value="Gurgaon">
-                        <label for="gurgaon">Gurgaon</label>
+                        </div>
+                        <div class="filter-section">
+                            <label class="filterbygender">Filter By Gender</label>
+                            <div class="filter-check"> <input type="checkbox" name="filter-gender" id="male"
+                                    value="male">
+                                <label for="male">Male</label>
+                            </div>
+                            <div class="filter-check"> <input type="checkbox" name="filter-gender" id="female"
+                                    value="female">
+                                <label for="female">Female</label>
+                            </div>
+                            <div class="filter-check"> <input type="checkbox" name="filter-gender" id="other"
+                                    value="other">
+                                <label for="other">Other</label>
+                            </div>
+
+                        </div>
                     </div>
 
-                    <div class="filter-check">
-                        <input type="checkbox" name="filter-city" id="faridabad" value="Faridabad">
-                        <label for="faridabad">Faridabad</label>
-                    </div>
-                    <div class="filter-check">
-                        <input type="checkbox" name="filter-city" id="jalandhar" value="Jalandhar">
-                        <label for="jalandhar">Jalandhar</label>
-                    </div>
-                    <div class="filter-check">
-                        <input type="checkbox" name="filter-city" id="patna" value="Patna">
-                        <label for="patna">Patna</label>
-                    </div>
-                    <label class="filterbygender">Filter By Gender</label>
-                    <div class="filter-check">
-                        <input type="checkbox" name="filter-gender" id="male" value="male">
-                        <label for="male">Male</label>
-                    </div>
-                    <div class="filter-check">
-                        <input type="checkbox" name="filter-gender" id="female" value="female">
-                        <label for="female">Female</label>
-                    </div>
-                    <div class="filter-check">
-                        <input type="checkbox" name="filter-gender" id="other" value="other">
-                        <label for="other">Other</label>
-                    </div>
                     <div class="filter-reset-row">
                         <button id="applyfilter" class="applyfilter" onclick="filterBy()">Apply Filter</button>
                         <button id="resetfilter" class="resetfilter" onclick="resetfilter()">Reset</button>
                     </div>
-
                 </div>
             </div>
         </div>
-
-        <table id="dataTable" border="1">
-            <thead>
-                <tr>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Email</th>
-                    <th>Phone</th>
-                    <th>Gender</th>
-                    <th>DOB</th>
-                    <th>Languages</th>
-                    <th>Address</th>
-                    <th>City</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody id="tableBody">
-            </tbody>
-        </table>
-
+        <div class="table-wrapper">
+            <table id="dataTable" border="1">
+                <thead>
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Gender</th>
+                        <th>DOB</th>
+                        <th>Languages</th>
+                        <th>Address</th>
+                        <th>City</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody"></tbody>
+            </table>
+        </div>
     </div>
-
-
     <script src="script.js"></script>
 </body>
 

@@ -299,7 +299,7 @@ function editEntry(i) {
     })
 
     const submit = document.getElementById("submit");
-    submit.innerText = "Update";
+    submit.value = "Update";
 }
 function sortData(key) {
     const { prop, type, order } = sortConfig[key];
@@ -368,13 +368,15 @@ function handleFormSubmit(e) {
         const details = fetchData();
         if (!isEditing) {
             data.push(details);
+            form.reset();
             alert("Form submitted successfully ");
         }
         else {
             data.splice(editIndex, 1, details);
             isEditing = false;
-            document.getElementById("submit").innerText = "Submit";
+            document.getElementById("submit").value = "Register";
             alert("All Changes Saved");
+            form.reset();
         }
     }
     renderTable();
@@ -382,7 +384,6 @@ function handleFormSubmit(e) {
 
 }
 function resetForm() {
-    document.querySelector("form").reset();
     document.querySelectorAll(".editbtn").forEach(b => b.disabled = false);
     document.querySelectorAll(".dbtn").forEach(b => b.disabled = false);
     const inputBoxes = form.querySelectorAll('.input-box');
@@ -406,13 +407,13 @@ function resetfilter(){
     renderTable();
 }
 const f = document.getElementById("filter-container");
-function showFilter(){
-    f.style.display = "block";
-    requestAnimationFrame(() => f.classList.remove("hide"));
+function showFilter() {
+    document.getElementById("filter-container").style.display = "block";
+    document.getElementById("filter-backdrop").style.display = "block";
 }
-function hideFilter(){
-    f.classList.add("hide");
-    setTimeout(() => {
-        f.style.display = "none";
-    }, 600);
+
+function hideFilter() {
+    document.getElementById("filter-container").style.display = "none";
+    document.getElementById("filter-backdrop").style.display = "none";
 }
+document.getElementById("filter-backdrop").onclick = hideFilter;

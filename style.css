@@ -6,19 +6,13 @@
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
 }
-/* .page-container{
-    width: 100%;
-    margin: auto;
-    max-width: 1420px;
-    padding: 20px;
-} */
+
 body {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    /* background: linear-gradient(135deg, #71b7e6, #9b59b6); */
     background-image: url('back.png');
     background-attachment: fixed;
 }
@@ -26,6 +20,10 @@ body {
 .form-container {
     display: flex;
     gap: 20px;
+}
+
+.form-container>div {
+    flex: 1;
 }
 
 .container {
@@ -108,7 +106,7 @@ form input[type="submit"]:hover {
 }
 
 .container .address {
-    width: 400px;
+    width: 100%;
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -181,14 +179,15 @@ small {
 }
 
 .result {
-    margin-top: 20px;
     padding: 30px;
     border: 1px solid #ccc;
     border-radius: 8px;
     background-color: #f9f9f9;
-    width: auto;
-    margin-bottom: 20px;
+    margin: 20px auto;
     display: none;
+    width: 90%;
+    overflow-x: hidden;
+
 }
 
 .result h2 {
@@ -202,8 +201,34 @@ small {
     font-weight: 400;
 }
 
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    max-width: 100%;
+    -webkit-overflow-scrolling: touch;
+    display: block;
+    border-radius: 8px;
+}
+
+.table-wrapper::-webkit-scrollbar {
+    height: 6px;
+}
+
+.table-wrapper::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 10px;
+}
+
+#dataTable th,
+#dataTable td {
+    white-space: nowrap;
+    padding: 8px;
+}
+
 #dataTable {
     width: 100%;
+    min-width: 900px;
     border-collapse: collapse;
     margin-top: 20px;
     background: #fff;
@@ -243,7 +268,6 @@ small {
     border-bottom: 1px solid #eee;
 }
 
-
 #dataTable button {
     padding: 6px 12px;
     font-size: 13px;
@@ -272,8 +296,8 @@ small {
     background: #ff4545;
 }
 
-.input-col2 {
-    margin-bottom: 40px !important;
+.sort-by {
+    margin-bottom: 5px;
 }
 
 .sortdiv {
@@ -290,14 +314,12 @@ small {
     font-weight: 600;
     box-shadow: 0 4px 10px rgba(120, 90, 255, 0.4);
     transition: 0.2s;
-
 }
 
 #filter:hover,
 .applyfilter:hover {
     transform: translateY(-2px);
     box-shadow: 0 6px 16px rgba(120, 90, 255, 0.5);
-
 }
 
 .sortdiv label {
@@ -314,18 +336,32 @@ small {
 }
 
 .filter-container {
-    width: 300px;
-    padding: 30px;
-    font-size: 20px;
-    border: #C4B5FD;
-    background-color: #EDE4FF;
-    border-radius: 5px;
-    position: absolute;
-    top: 100%;
-    left: 0;
+    width: 650px;
+    background: #ffffff;
+    padding: 25px 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
     display: none;
-    z-index: 15;
+    position: absolute;
+    top: 55px;
+    right: 0;
+    left: 0;
+    z-index: 999;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all 0.28s ease;
 }
+
+.filter-inner-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.filter-section {
+    width: 50%;
+}
+
 
 .filterbycity,
 .filterbygender {
@@ -353,18 +389,20 @@ small {
     border-radius: 12px;
     font-weight: 500;
     transition: 0.2s;
-
 }
-.resetfilter:hover{
+
+.resetfilter:hover {
     transform: translateY(-2px);
     background: rgba(255, 255, 255, 0.5);
 }
-.filter-reset-row{
+
+.filter-reset-row {
     display: flex;
     margin: auto;
     gap: 10px;
 }
-.filter-reset-row button{
+
+.filter-reset-row button {
     flex-grow: 1;
     height: 46px;
     border-radius: 12px;
@@ -374,6 +412,7 @@ small {
     align-items: center;
     justify-content: center;
 }
+
 input[type="date"] {
     padding: 10px;
     width: 100%;
@@ -382,7 +421,8 @@ input[type="date"] {
     font-size: 16px;
     background-color: #fff;
 }
-.city-select{
+
+.city-select {
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
@@ -391,11 +431,13 @@ input[type="date"] {
     background-color: #fff;
     color: #333;
 }
-.cross{
+
+.cross {
     position: absolute;
     top: 40px;
     right: 30px;
 }
+
 #filter-container {
     opacity: 1;
     transform: translateY(0);
@@ -406,4 +448,175 @@ input[type="date"] {
     opacity: 0;
     transform: translateY(-10px);
     pointer-events: none;
+}
+
+.applyfilter {
+    background: #8054ff;
+    color: white;
+    border: none;
+    padding: 12px 22px;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.resetfilter {
+    background: #ece8ff;
+    color: #5541a8;
+    padding: 12px 22px;
+    border-radius: 10px;
+    font-weight: 600;
+}
+
+.filter-reset-row {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+    gap: 12px;
+}
+
+form .address {
+    width: 100% !important;
+}
+
+@media (max-width: 1024px) {
+    .form-container {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .col1,
+    .col2 {
+        width: 100%;
+        flex: 1 1 100%;
+    }
+
+    .input-box,
+    .address {
+        width: 100%;
+    }
+
+    .filter-wrapper {
+        width: 100%;
+        position: relative;
+    }
+
+    .filter-container {
+        position: absolute;
+        top: 55px;
+        left: 0;
+        right: 0;
+        width: 100%;
+        max-width: 100%;
+        padding: 20px;
+        border-radius: 12px;
+        z-index: 999;
+    }
+
+    .filter-inner-row {
+        display: flex;
+        gap: 20px;
+    }
+
+    .filter-section {
+        width: 100%;
+    }
+
+    .cross {
+        top: 25px;
+        right: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        max-width: 90%;
+        padding: 15px;
+        margin: 30px auto;
+    }
+
+    .form-container {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .col1,
+    .col2 {
+        width: 100%;
+        flex: 1 1 100%;
+    }
+
+    .input-box,
+    .address {
+        width: auto !important;
+    }
+
+    .filter-wrapper {
+        width: 100%;
+        position: relative;
+    }
+
+    .filter-container {
+        position: relative;
+        width: 300px;
+        margin-top: 10px;
+        left: -200px;
+        padding: 18px;
+        border-radius: 12px;
+        background: #fff;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+        display: none;
+    }
+
+    .filter-inner-row {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .filter-section {
+        width: 100%;
+    }
+
+    .filterbycity,
+    .filterbygender {
+        font-size: 18px;
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    .cross {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        font-size: 20px;
+    }
+
+    .filter-reset-row {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    .applyfilter,
+    .resetfilter {
+        width: 100%;
+        height: 44px;
+        font-size: 16px;
+    }
+
+    .filter-backdrop {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.35);
+        backdrop-filter: blur(2px);
+        z-index: 900;
+        display: none;
+    }
+
 }
